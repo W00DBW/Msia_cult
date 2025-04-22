@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaysia Culture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: gray;
+            background-size: cover;
+        }
+
+        header {
+            color: red;
+            text-align: center;
+            padding: 50px;
+            background-image: url(malaysia.avif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-decoration: underline;
+            font-size: larger;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: navy;
+            padding: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+
+        nav a:hover {
+            background: transparent;
+        }
+
+        footer nav {
+            display: flex;
+            justify-content: left;
+            background-color: navy;
+            padding: 100px;
+            color: white;
+        }
+
+        footer nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+
+        footer nav ul h3 {
+            color: white;
+
+        }
+
+        nav a:hover {
+            background: rgb(203, 203, 3);
+            text-decoration: underline;
+        }
+
+        .footer-line {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: navy;
+            color: white;
+        }
+
+        .footer-content .copyright {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-content .copyright img {
+            margin-right: 10px;
+        }
+
+        .culture-section {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px;
+
+        }
+
+        .culture {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .culture img {
+            max-width: 200px;
+            border-radius: 50%;
+            transition: opacity 2.3s ease-in-out;
+        }
+
+        .culture img:hover {
+            transform: scale(1.2);
+        }
+
+
+        .history {
+            text-align: center;
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .historyheader {
+            text-align: center;
+            padding: 40px;
+            background-color: orange;
+
+
+        }
+
+        .history p {
+            text-align: center;
+            white-space: normal;
+            font-size: 22px;
+            color: white;
+        }
+
+        .history figure {
+            display: inline-block;
+            border: 1px;
+            margin: 20px;
+        }
+
+
+        .history figcaption {
+            border: 1px;
+            text-align: center;
+        }
+
+        .history img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .religion {
+            text-align: center;
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .religionheader {
+            text-align: center;
+            padding: 40px;
+            background-color: orange;
+
+
+        }
+
+        .religion p {
+            text-align: center;
+            white-space: normal;
+            font-size: 22px;
+            color: white;
+        }
+
+        .religion figure {
+            display: inline-block;
+            border: 1px;
+            margin: 20px;
+        }
+
+
+        .religion figcaption {
+            border: 1px;
+            text-align: center;
+        }
+
+        .religion img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .places {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-left: 20px;
+
+        }
+
+        .header3 {
+            text-align: center;
+            padding: 40px;
+            background-color: orange;
+        }
+
+        .places-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .places figure {
+            width: calc(50% - 10px);
+        }
+
+        .places img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .places figcaption {
+            text-align: center;
+        }
+
+        .places img:hover {
+            transform: scale(1.2);
+        }
+
+        .expand-button {
+            cursor: pointer;
+            color: red;
+            text-decoration: none;
+            text-align: center;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid red;
+            margin-left: 5px;
+        }
+
+        .hidden-content {
+            display: none;
+            text-align: center;
+        }
+
+        .newsletter-popup {
+            opacity: 0;
+            visibility: hidden;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: opacity 1.3s ease, visibility 1.3s ease;
+        }
+
+        #newsletterForm button:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        .newsletter-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .newsletter-content {
+            padding: 20px;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: white;
+            background-color: black;
+        }
+
+        .newsletter-content form input[type="text"],
+        .newsletter-content form input[type="email"],
+        .newsletter-content form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .close-popup {
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #ddd;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 24px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const newsletterPopup = document.getElementById("newsletterPopup");
+            const closePopupButton = document.getElementById("closeNewsletterPopup");
+            const newsletterForm = document.getElementById("newsletterForm");
+
+            // Check if the user is already subscribed
+            if (!localStorage.getItem("subscribed")) {
+                setTimeout(function () {
+                    newsletterPopup.classList.add("active");
+                }, 2500);
+            }
+
+            closePopupButton.addEventListener("click", function () {
+                newsletterPopup.classList.remove("active");
+            });
+
+            newsletterForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const firstName = document.getElementById("firstName").value;
+                const email = document.getElementById("email").value;
+
+                // Assuming you want to set a localStorage flag when the user subscribes
+                localStorage.setItem("subscribed", "true");
+                localStorage.setItem("firstName", firstName);
+                localStorage.setItem("email", email);
+
+                window.location.href = "thankyou.html";
+
+                // Close the popup
+                newsletterPopup.classList.remove("active");
+            });
+        });
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function getCookie(name) {
+            const cookieName = `${name}=`;
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                if (cookie.indexOf(cookieName) === 0) {
+                    return cookie.substring(cookieName.length, cookie.length);
+                }
+            }
+            return null;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Malaysia Culture</h1>
+        <p>Explore and celebrate different cultures from Malaysia</p>
+    </header>
+    <nav>
+        <a href="visit.html">Home</a>
+        <a href="ChineseCulture.html">Chinese</a>
+        <a href="Malay.html">Malay</a>
+        <a href="#culture3">Indian</a>
+
+    </nav>
+    <div class="culture-section">
+        <div class="culture" id="culture1">
+            <a href="ChineseCulture.html">
+                <img src="chinese.jpeg" alt="Chinese">
+            </a>
+            <h2>Chinese Culture</h2>
+            <p>Discover the rich heritage of Chinese culture.</p>
+        </div>
+        <div class="culture" id="culture2">
+            <a href="Malay.html">
+                <img src="malay cul.jpg" alt="Malay">
+            </a>
+            <h2>Malay Culture</h2>
+            <p>Immerse yourself in the traditions of Malay culture.</p>
+        </div>
+        <div class="culture" id="culture3">
+            <a href="#culture3">
+                <img src="Indian race.jpg" alt="Indian">
+            </a>
+            <h2>Indian Culture</h2>
+            <p>Experience the vibrant customs of Indian culture.</p>
+        </div>
+    </div>
+
+    <div class="historyheader">
+        <h2><b><u>History of Malaysia</u></b></h2>
+    </div>
+    <div class="history">
+
+        <p>
+        <figure>
+            <a href="https://en.wikipedia.org/wiki/National_Monument_(Malaysia)">
+                <img src="1280px-Kuala_Lumpur_Malaysia_Tugu-Negara-Malaysia-03_20191226121054.jpg" width="500px"
+                    height="500px" alt="Tugu Negara Malaysia">
+            </a>
+            <figcaption>
+                Tugu Negara Malaysia
+            </figcaption>
+        </figure>
+
+
+        </p>
+        <p>
+            The rise of the <b>Sultanate of Malacca</b>
+            around the year 1400 AD is generally thought to have been the
+            beginning of Malaysian history. At its peak, the Sultanate
+            controlled an extensive portion of Peninsular Malaysia's and
+            Sumatra's East Coast. Malacca's development into a significant
+            governmental entity was made possible by its strategic importance
+            as an intersection connecting East Asia and the Middle East. This
+            position positioned Malacca as a significant trade hub for Southeast
+            Asian trade, particularly in spices. Islam became the most popular
+            religion among the people as a result of the ruler's adoption of it.
+        <figure>
+            <a href="https://en.wikipedia.org/wiki/Malacca_Sultanate">
+                <img src="malacca sultanate map.jpg" width="500px" height="350px" alt="Malacca Sultnate Map">
+            </a>
+            <figcaption>Malacca Sultnate Map</figcaption>
+        </figure>
+
+        </p>
+
+        <div class="expand-button" onclick="toggleContent()">Read More<span class="arrow-down"></span></div>
+        <div class="hidden-content">
+
+            <p>
+                <video controls poster="history video image.PNG" width="600" height="400">
+                    <source src="The History of the Malacca Sultanate.mp4" type="video/mp4">
+                    <source src="The History of the Malacca Sultanate.mp4" type="video/ogg">
+                    <source src="The History of the Malacca Sultanate.mp4" type="video/webm">
+                </video>
+            </p>
+
+            <p>
+                The <b>Portuguese</b> seized Malacca in 1511,
+                beginning in the colonial era in the Malaya region.
+                The Dutch then took it in 1641, and the British took over in 1824
+                thanks to the Anglo-Dutch Treaty. The colonization by the British
+                lasted the longest. They centralized the administration, which had
+                traditionally been run by the Malay kings with the help of local
+                royalty, which enraged the people of the region. Although there were
+                some attempts at colonial resistance, they were usually disconnected
+                and ineffective. These initiatives were led by notable individuals
+                including <b> Dol Said, Tok Janggut, Datuk Bahaman, Rentap,
+                    Dato Maharajalela, Rosli Dobi</b>, and others.
+            </p>
+
+            <p>
+                <video controls poster="fall video.PNG" width="600" height="400">
+                    <source src="Fall of the Malacca Sultanate.mp4" type="video/mp4">
+                    <source src="Fall of the Malacca Sultanate.mp4" type="video/ogg">
+                    <source src="Fall of the Malacca Sultanate.mp4" type="video/webm">
+                </video>
+            </p>
+
+            <p>
+                Growing numbers of people in Malaya obtained education in the local
+                area as well as from the Middle East during the 1920s and 1930s.
+                This educated group started promoting nationalism and used media
+                like newspapers and magazines to spread their ideas. Some people
+                founded organizations with the aim of removing foreign rulers and
+                establishing their own government, such as Kesatuan Melayu Muda (KMM)
+                and Kesatuan Melayu Singapura (KMS). As hopes for freedom rose,
+                the Japanese invaded Malaya in late 1941, forcing yet another age
+                of colonization. Before ending in 1945 as a result of the
+                bombings of Hiroshima and Nagasaki, Japanese rule remained for a
+                while.
+            </p>
+
+            <p>
+                <video controls poster="atomic bomb.PNG" width="600" height="400">
+                    <source src="Atomic Bomb.mp4" type="video/mp4">
+                    <source src="Atomic Bomb.mp4" type="video/ogg">
+                    <source src="Atomic Bomb.mp4" type="video/webm">
+                </video>
+            </p>
+
+            <p>
+                The fight of Malayan nationalists gained new energy with the rise of
+                Tunku Abdul Rahman. The Alliance Party, founded by Tunku, forced the
+                British to accept the need for self-government. The London Agreement,
+                which was signed on February 8, 1956, signaled the culmination of
+                Malays, Chinese, and Indian unity and stated that Malaya would
+                become independent on August 31, 1957. Upon his arrival home from
+                London on February 20, 1956, Tunku Abdul Rahman Al-haj announced
+                Malaya's independence. Tunku Abdul Rahman Putra Alhaj suggested the
+                creation of a new country on May 27, 1961, by combining Malaya,
+                Singapore, Sabah, Sarawak, and Brunei.
+            </p>
+
+            <p>
+            <figure>
+                <a href="https://en.wikipedia.org/wiki/Tunku_Abdul_Rahman">
+                    <img src="tunku.jpg" width="250px" height="350px">
+                </a>
+                <figcaption>
+                    Tunku Abdul Rahman
+                </figcaption>
+            </figure>
+            </p>
+
+
+        </div>
+
+        <div class="religionheader">
+            <h2><b><u>Religion in Malaysia</u></b></h2>
+        </div>
+
+        <div class="religion" id="religionSection">
+
+            <p>
+            <h3><u>Islam</u></h3>
+            <figure>
+                <a
+                    href="https://en.wikipedia.org/wiki/Islam_in_Malaysia#:~:text=Islam%20in%20Malaysia%20is%20represented,established%20in%20the%2015th%20century.">
+                    <img src="islam.jpg" width="550px" height="450px" alt="Islam Religion">
+                </a>
+                <figcaption>
+                    Islam Religion
+                </figcaption>
+            </figure>
+
+
+            </p>
+            <p>
+                In <b>Malaysia</b>, most population beliefs in Islam which is the Malays.
+                Malay culture is dominated by Islam, which is its foundation. The Arabic language,
+                which is used for Islamic prayer and events, is the foundation of a significant
+                amount of words in the Malay language. This is not the only language that has words
+                from various cultures; the Malay language also contains words from English,
+                French, Portuguese, Chinese, Dutch, Sanskrit, Tamil, and English. Islamic
+                celebrations are practiced as part of Malay culture since Islam is so rooted
+                in Malay society. In many everyday circumstances, the terms Muslim and Malay
+                are the same.
+            </p>
+
+            <p>
+            <h3><u>Buddhism</u></h3>
+            <figure>
+                <a href="https://en.wikipedia.org/wiki/Buddhism_in_Malaysia">
+                    <img src="buddha.jpg" width="550px" height="450px" alt="Buddha Religion">
+                </a>
+                <figcaption>
+                    Buddhism Religion
+                </figcaption>
+            </figure>
+            </p>
+            <p>
+                The <b>second most dominated religion</b> is known as Buddhism, where it dominates the Chinese culture.
+                As early as 200 BCE, Buddhism was introduced to the Malays and to the people of the Malay Archipelago.
+                Approximately 30 tiny Indianized republics formed and disappeared in the Malay
+                Peninsula, according to Chinese recorded sources. Indian traders and priests who
+                traveled the maritime trade routes and brought Indian ideas about religion,
+                government, and the arts are thought to be the creators of Malay-Buddhism.
+                Hinduism and Mahayana Buddhism were among the indigenous concepts that the people
+                of the region, particularly the royal courts, combined throughout many years,
+                helping to define their political and cultural traditions. However, after being
+                invaded by the Chola monarch of Tamil Nadu at the beginning of the 11th century, the
+                Malay Kedah Kingdom renounced the Indian religion.
+            </p>
+
+            <p>
+            <h3><u>Christinality</u></h3>
+            <figure>
+                <a
+                    href="https://en.wikipedia.org/wiki/Christianity_in_Malaysia#:~:text=Early%20Christian%20presence%20in%20the,St%20Thomas%20to%20the%20early">
+                    <img src="christinality.jpg" width="550px" height="450px" alt="Christinality Religion">
+                </a>
+                <figcaption>
+                    Christinality Religion
+                </figcaption>
+            </figure>
+            </p>
+
+            <p>
+                Last but not least, there is a minor population who is dominated by
+                a western origin religion which is called <b>christinality</b>.
+                Early Christian presence in the Malay archipelago can be traced back to Arab
+                Christian traders from the Arabian Peninsula who heard the gospel taught by Peter
+                the apostle at Jerusalem (Acts 2:11), as well as those converted by Paul's ministry
+                in Arabia (Galatians 1:17) and the evangelistic ministry of St. Thomas to the early
+                Arabians and Nestorians from as early as the 7th century and to early Arab
+                Christian, Persian, and Nestorian traders in Mal Penang was taken over by the
+                British in 1786, and Malacca, which the Dutch had won in 1641, was taken over by
+                them in 1795. The Major Seminary was founded in Penang by Thai Catholic priests in 1810.
+            </p>
+
+            <p>
+                Since 1815, the LMS has been based in Malacca and Penang.
+                However, after 1842, when it became possible to access China, most Protestant
+                missions stopped operating. Portuguese and French elites split the remaining
+                Catholic leadership. Methodist ministry began in 1885, and Open Brethren
+                ministry began in 1860. Chinese churches in Johore and congregations of
+                immigrants in Penang, Ipoh, and Kuala Lumpur contributed to the growth of
+                Presbyterianism. In 1932, a mission to the Sengoi natives was launched. The
+                Charismatic Movement of the 1970s helped Pentecostalism gain more ground,
+                but missionaries from the North American and Ceylon Pentecostal Mission
+                (Pentecostal Church of Malaysia) had been working there since 1935.
+            </p>
+
+
+        </div>
+    </div>
+
+    <script>
+        function toggleContent() {
+            var content = document.querySelector('.hidden-content');
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+
+            } else {
+                content.style.display = 'none';
+
+            }
+        }
+    </script>
+
+    <div class="header3">
+        <h2><u><b>Places to visit in Malaysia</b></u></h2>
+    </div>
+
+    <div class="places">
+
+        <div class="places-row">
+            <figure>
+                <a href="https://www.holidify.com/places/kuala-lumpur/">
+                    <img src="kuala lumpur.jpg" alt="Kuala Lumpur">
+                </a>
+                <figcaption>
+                    Kuala Lumpur
+                </figcaption>
+            </figure>
+
+            <figure>
+                <a href="https://www.holidify.com/places/langkawi/">
+                    <img src="langkawi.jpg" alt="Langkawi">
+                </a>
+                <figcaption>
+                    Langkawi
+                </figcaption>
+            </figure>
+        </div>
+
+
+        <div class="places-row">
+            <figure>
+                <a href="https://www.holidify.com/places/georgetown/">
+                    <img src="georgetown.jpg" alt="Georgetown">
+                </a>
+                <figcaption>
+                    Georgetown
+                </figcaption>
+            </figure>
+
+            <figure>
+                <a href="https://www.holidify.com/places/genting-highlands/">
+                    <img src="genting highland.jpg" alt="Genting Highland">
+                </a>
+                <figcaption>
+                    Genting Highland
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="places-row">
+            <figure>
+                <a href="https://www.holidify.com/places/cameron-highlands/">
+                    <img src="cameron highland.jpg" alt="Cameron Highland">
+                </a>
+                <figcaption>
+                    Cameron Highland
+                </figcaption>
+            </figure>
+
+            <figure>
+                <a href="https://www.holidify.com/places/kota-kinabalu/">
+                    <img src="kota kinabalu.jpg" alt="Kota Kinabalu">
+                </a>
+                <figcaption>
+                    Kota Kinabalu
+                </figcaption>
+            </figure>
+        </div>
+        <div class="places-row">
+            <figure>
+                <a href="https://www.holidify.com/places/redang-island/">
+                    <img src="redang island.jpg" alt="Redang Island">
+                </a>
+                <figcaption>
+                    Redang Island
+                </figcaption>
+            </figure>
+
+            <figure>
+                <a href="https://www.holidify.com/places/melaka/">
+                    <img src="melaka.webp" alt="Melaka">
+                </a>
+                <figcaption>
+                    Melaka
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="newsletter-popup" id="newsletterPopup">
+        <div class="newsletter-content">
+            <h2>Subscribe to our newsletter</h2>
+            <img src="multi.jpg" width="400" height="240" alt="Multi Culture">
+            <p>Stay updated with the latest news and cultural insights!!!</p>
+            <form id="newsletterForm">
+                <input type="text" id="firstName" placeholder="Enter your First Name">
+                <input type="email" id="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+            <button class="close-popup" id="closeNewsletterPopup">
+                <span>&times;</span>
+            </button>
+        </div>
+    </div>
+</body>
+
+<footer>
+    <nav>
+
+        <img src="nylh-logo.png" width="200" height="150" alt="NYLH logo">
+
+        <ul>
+            <h3>Share and Follow Us</h3>
+
+            <li><a href="https://www.facebook.com/">Facebook</a></li>
+            <li><a href="https://www.instagram.com/">Instagram</a></li>
+            <li><a href="http://www.twitter.com/">Twitter X</a></li>
+        </ul>
+
+        <ul>
+            <h3>Back To Homepage</h3>
+            <li><a href="visit.html">Home</a></li>
+            <li><a href="ChineseCulture.html">Chinese Culture</a></li>
+            <li><a href="Malay.html">Malay Culture</a></li>
+            <li><a href="#culture3">Indian Culture</a></li>
+        </ul>
+
+        <ul>
+            <h3>Contact Us</h3>
+            <li>019-5179961 -- (Mr.Lee)</li>
+            <li>012-5011053 -- (Mr.Ng)</li>
+            <li>016-2207088 -- (Mr.Yap)</li>
+            <li>017-2229002 -- (Mr.Ho)</li>
+        </ul>
+
+
+    </nav>
+    <hr class="footer-line">
+    <div class="copyright">
+        <p>&copy; 2023 NYLH, Malaysia Culture Organization. All Rights Reserved</p>
+    </div>
+
+
+</footer>
+
+</html>

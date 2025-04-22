@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Form</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        #notification {
+            display: none;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ask Us a Question! We will handle your questions soon!</h1>
+    <form id="question-form">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <label for="question">Your Question:</label><br>
+        <textarea id="question" rows="4" required></textarea><br><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <div id="notification">Form submitted successfully! You may leave the form page now~</div>
+
+    <script>
+        function submitForm() {
+            // Get user inputs
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const question = document.getElementById('question').value;
+
+            // Create an object to represent the submitted data
+            const formData = {
+                name,
+                email,
+                question
+            };
+
+            // Check if local storage is available
+            if (typeof(Storage) !== 'undefined') {
+                // Retrieve existing data or initialize an empty array
+                const storedData = JSON.parse(localStorage.getItem('questions')) || [];
+
+                // Add the new data to the array
+                storedData.push(formData);
+
+                // Save the updated data back to local storage
+                localStorage.setItem('questions', JSON.stringify(storedData));
+
+                // Display the notification
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+
+                // Reset the form
+                document.getElementById('question-form').reset();
+            } else {
+                alert('Local storage is not supported in your browser. Data cannot be saved.');
+            }
+        }
+    </script>
+</body>
+</html>
